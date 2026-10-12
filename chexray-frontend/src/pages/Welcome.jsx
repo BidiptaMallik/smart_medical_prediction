@@ -6,35 +6,21 @@ import SprocketStrip from '../components/SprocketStrip';
 export default function Welcome({ onEnter }) {
   return (
     <div className="welcome">
-      <header className="welcome__nav">
-        <div className="welcome__brand mono">
-          <span className="welcome__brand-mark" />
-          CXR&nbsp;/&nbsp;14
-        </div>
-        <span className="welcome__nav-tag mono">RESEARCH PROTOTYPE</span>
-      </header>
-
       <section className="welcome__hero">
         <div className="welcome__copy">
-          <span className="welcome__eyebrow mono">CHEST X-RAY · MULTI-LABEL ESTIMATOR</span>
+          <span className="welcome__eyebrow mono">CHEST X-RAY · 14 INDEPENDENT ESTIMATES</span>
           <h1 className="welcome__headline">
-            Fourteen findings,
+            One scan.
             <br />
-            read at once.
+            A broader view.
           </h1>
           <p className="welcome__sub">
-            Upload a chest X-ray and the model scores the likelihood of fourteen
-            common findings side by side — the way a differential reads a film,
-            not a single verdict.
+            Explore model estimates for fourteen chest X-ray findings side by side. Review the strongest signals, then take the results to a qualified clinician.
           </p>
           <button className="welcome__cta" onClick={onEnter}>
-            Open the reader
+            Start a scan
             <span className="welcome__cta-arrow">→</span>
           </button>
-          <p className="welcome__disclaimer">
-            Trained on a small public sample. Estimates reflect pattern similarity
-            to training images — not a diagnosis, and not reviewed by a radiologist.
-          </p>
         </div>
 
         <ScanFrame scanning label="Awaiting input">
@@ -45,6 +31,10 @@ export default function Welcome({ onEnter }) {
       <SprocketStrip />
 
       <section className="welcome__how">
+        <div className="welcome__how-heading">
+          <span className="mono">HOW IT WORKS</span>
+          <h2>From image to review</h2>
+        </div>
         <div className="welcome__how-item">
           <span className="welcome__how-index mono">01</span>
           <h3>Upload a film</h3>

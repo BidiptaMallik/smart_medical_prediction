@@ -1,0 +1,39 @@
+.docs { max-width: 1180px; margin: 0 auto; padding: 42px 32px 24px; min-height: 70vh; }
+.docs__intro { margin-bottom: 32px; }
+.docs__eyebrow { color: var(--cyan); font-size: 0.66rem; }
+.docs__title { font-family: var(--font-display); font-size: 2.35rem; font-weight: 600; margin: 10px 0 8px; letter-spacing: 0; }
+.docs__sub { color: var(--text-dim); font-size: 0.92rem; margin: 0; max-width: 600px; line-height: 1.6; }
+.docs__error { color: var(--danger); font-size: 0.88rem; }
+
+.docs__layout { display: grid; grid-template-columns: 250px 1fr; gap: 40px; align-items: start; }
+.docs__diseases { position: sticky; top: 96px; max-height: calc(100vh - 116px); overflow-y: auto; display: flex; flex-direction: column; border: 1px solid var(--line); background: var(--surface); }
+.docs__disease {
+  display: flex; flex-direction: column; gap: 2px; text-align: left; background: none; border: none;
+  border-bottom: 1px solid var(--line); color: var(--text-dim); padding: 10px 14px; font-size: 0.86rem; cursor: pointer;
+}
+.docs__disease:last-child { border-bottom: none; }
+.docs__disease:hover { color: var(--text); background: var(--surface-raised); }
+.docs__disease.is-active { color: var(--text); background: var(--surface-raised); box-shadow: inset 3px 0 0 var(--cyan); }
+.docs__disease-spec { font-size: 0.66rem; color: var(--text-faint); letter-spacing: 0.04em; }
+
+.docs__route { font-size: 0.78rem; color: var(--cyan); margin: 0 0 16px; letter-spacing: 0.04em; }
+.docs__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.docs__card { background: var(--surface); border: 1px solid var(--line); padding: 18px; animation: card-in 0.35s ease backwards; }
+@keyframes card-in { from { opacity: 0; transform: translateY(6px); } }
+.docs__card h3 { font-family: var(--font-display); font-size: 1.05rem; margin: 0 0 4px; }
+.docs__spec { font-size: 0.7rem; color: var(--cyan); letter-spacing: 0.05em; text-transform: uppercase; }
+.docs__card p { margin: 10px 0 0; font-size: 0.86rem; color: var(--text-dim); }
+.docs__card .docs__meta { margin-top: 4px; font-size: 0.78rem; color: var(--text-faint); }
+
+@media (max-width: 860px) {
+  .docs { padding-top: 32px; }
+  .docs__layout { grid-template-columns: 1fr; gap: 22px; }
+  .docs__diseases { position: static; max-height: 260px; }
+  .docs__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .docs { padding: 28px 20px 20px; }
+  .docs__title { font-size: 1.9rem; }
+  .docs__disease { padding: 9px 12px; }
+}

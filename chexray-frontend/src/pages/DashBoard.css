@@ -5,22 +5,8 @@
   min-height: 100vh;
 }
 
-.dash__nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 28px 0;
-}
-
-.dash__back {
-  background: none;
-  border: none;
-  color: var(--text);
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  padding: 0;
-}
+.dash__toolbar { display: flex; align-items: center; justify-content: space-between; padding: 22px 0 26px; }
+.dash__eyebrow { color: var(--text-faint); font-size: 0.68rem; }
 
 .dash__status {
   font-size: 0.68rem;

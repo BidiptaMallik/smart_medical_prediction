@@ -1,0 +1,81 @@
+.consult { margin-top: 36px; border-top: 1px solid var(--line); padding-top: 28px; }
+
+.consult__urgent {
+  background: rgba(232, 102, 79, 0.1); border: 1px solid var(--danger); border-left-width: 3px;
+  color: var(--text); padding: 12px 14px; font-size: 0.88rem; line-height: 1.5; margin: 0 0 18px;
+}
+
+.consult__intro { display: flex; gap: 24px; align-items: center; justify-content: space-between; }
+.consult__intro h3 { font-family: var(--font-display); font-size: 1.1rem; margin: 0 0 6px; }
+.consult__intro p { color: var(--text-dim); font-size: 0.88rem; line-height: 1.55; margin: 0; max-width: 420px; }
+
+.consult__primary {
+  background: var(--cyan); color: #06110F; border: none; font-family: var(--font-display);
+  font-weight: 600; font-size: 0.9rem; padding: 12px 20px; cursor: pointer; white-space: nowrap;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.consult__primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 18px -6px var(--cyan); }
+.consult__primary:disabled { opacity: 0.4; cursor: not-allowed; }
+.consult__ghost {
+  background: none; border: 1px solid var(--line-bright); color: var(--text-dim);
+  padding: 11px 18px; font-size: 0.88rem; cursor: pointer;
+}
+.consult__ghost:hover { color: var(--text); border-color: var(--text-dim); }
+
+.consult__panel { background: var(--surface); border: 1px solid var(--line); padding: 22px; animation: panel-in 0.3s ease; }
+@keyframes panel-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.consult__steps { display: flex; gap: 18px; list-style: none; margin: 0 0 20px; padding: 0; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--text-faint); text-transform: uppercase; }
+.consult__steps .is-active { color: var(--cyan); }
+
+.consult__note { color: var(--text-dim); font-size: 0.85rem; margin: 0 0 14px; }
+.consult__sample { color: var(--text-faint); font-size: 0.74rem; margin: 10px 0 0; }
+
+.consult__doctors { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.doc-card {
+  display: flex; flex-direction: column; gap: 3px; text-align: left; background: var(--surface-raised);
+  border: 1px solid var(--line); color: var(--text); padding: 12px 14px; cursor: pointer; font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+.doc-card:hover { border-color: var(--line-bright); }
+.doc-card.is-selected { border-color: var(--cyan); box-shadow: inset 3px 0 0 var(--cyan); }
+.doc-card__name { font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; }
+.doc-card__spec { font-size: 0.7rem; color: var(--cyan); letter-spacing: 0.04em; }
+.doc-card__meta { font-size: 0.78rem; color: var(--text-dim); }
+.doc-card__why { font-size: 0.74rem; color: var(--amber); margin-top: 4px; }
+
+.consult__slots { margin-top: 20px; }
+.consult__slots h4, .consult__panel h4 { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin: 0 0 10px; font-weight: 500; }
+.slot-row { display: flex; gap: 14px; align-items: center; padding: 6px 0; }
+.slot-row__day { width: 86px; font-size: 0.8rem; color: var(--text-dim); flex-shrink: 0; }
+.slot-row__times { display: flex; flex-wrap: wrap; gap: 6px; }
+.slot-btn { background: var(--surface-raised); border: 1px solid var(--line); color: var(--text-dim); padding: 6px 10px; font-size: 0.78rem; cursor: pointer; }
+.slot-btn:hover { border-color: var(--line-bright); color: var(--text); }
+.slot-btn.is-selected { background: var(--cyan); border-color: var(--cyan); color: #06110F; }
+
+.consult__summary { font-size: 0.92rem; color: var(--text); margin: 0 0 16px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.consult__form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 14px; margin-bottom: 16px; }
+.consult__form label { display: flex; flex-direction: column; gap: 5px; font-size: 0.74rem; color: var(--text-dim); }
+.consult__wide { grid-column: 1 / -1; }
+.consult__form input, .consult__form select, .consult__form textarea {
+  background: var(--bg); border: 1px solid var(--line-bright); color: var(--text);
+  padding: 9px 10px; font-family: var(--font-body); font-size: 0.9rem;
+}
+.consult__form input:focus, .consult__form select:focus, .consult__form textarea:focus { outline: none; border-color: var(--cyan); }
+.consult__check { display: flex; gap: 10px; align-items: flex-start; font-size: 0.8rem; line-height: 1.5; color: var(--text-dim); margin: 0 0 10px; }
+.consult__check input { margin-top: 3px; accent-color: var(--cyan); }
+
+.consult__error { color: var(--danger); font-size: 0.85rem; margin: 12px 0 0; }
+.consult__actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+
+.consult__done-title { font-family: var(--font-display); font-size: 1.2rem; margin: 0 0 6px; }
+.consult__delivery { list-style: none; padding: 0; margin: 0 0 18px; font-size: 0.74rem; color: var(--text-dim); display: grid; gap: 4px; }
+.consult__report {
+  background: var(--bg); border: 1px solid var(--line); padding: 14px; margin: 0; white-space: pre-wrap;
+  font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.6; color: var(--text-dim); max-height: 340px; overflow: auto;
+}
+
+@media (max-width: 700px) {
+  .consult__intro { flex-direction: column; align-items: flex-start; }
+  .consult__doctors, .consult__form { grid-template-columns: 1fr; }
+}

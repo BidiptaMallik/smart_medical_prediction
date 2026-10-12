@@ -1,6 +1,8 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from app.consult import router as consult_router
+from app.chat import router as chat_router
 
 from app.model import predict_from_bytes
 from app.config import PATHOLOGIES
@@ -14,6 +16,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(consult_router)
+app.include_router(chat_router)
 
 class Prediction(BaseModel):
     pathology: str

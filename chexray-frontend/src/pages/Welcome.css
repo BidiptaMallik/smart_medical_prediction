@@ -40,7 +40,15 @@
   grid-template-columns: 1fr 1fr;
   gap: 64px;
   align-items: center;
-  padding: 56px 0 72px;
+  min-height: 560px;
+  padding: 72px 0 82px;
+}
+
+.welcome__hero > .scan-frame {
+  min-height: 420px;
+  background-color: var(--surface);
+  background-image: linear-gradient(rgba(137, 150, 166, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(137, 150, 166, 0.055) 1px, transparent 1px);
+  background-size: 30px 30px;
 }
 
 .welcome__eyebrow {
@@ -53,11 +61,11 @@
 
 .welcome__headline {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4.4vw, 3.6rem);
+  font-size: 3.4rem;
   line-height: 1.05;
   font-weight: 600;
   margin: 0 0 22px;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .welcome__sub {
@@ -103,11 +111,19 @@
 
 .welcome__how {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  padding: 64px 0 80px;
+  grid-template-columns: 1.15fr repeat(3, 1fr);
+  gap: 28px;
+  padding: 40px 0 72px;
+  border-top: 1px solid var(--line);
 }
 
+.welcome__how-heading > span { color: var(--cyan); font-size: 0.66rem; }
+.welcome__how-heading h2 {
+  max-width: 200px; margin: 12px 0 0; font-family: var(--font-display);
+  font-size: 1.65rem; font-weight: 500; line-height: 1.2;
+}
+
+.welcome__how-item { border-left: 1px solid var(--line); padding-left: 18px; }
 .welcome__how-index {
   display: block;
   color: var(--amber);
@@ -130,6 +146,18 @@
 }
 
 @media (max-width: 860px) {
-  .welcome__hero { grid-template-columns: 1fr; }
-  .welcome__how { grid-template-columns: 1fr; gap: 32px; }
+  .welcome__hero { grid-template-columns: 1fr; gap: 36px; min-height: auto; padding: 58px 0 62px; }
+  .welcome__hero > .scan-frame { min-height: 360px; }
+  .welcome__how { grid-template-columns: repeat(2, 1fr); gap: 28px 20px; }
+  .welcome__how-heading h2 { max-width: none; }
+}
+
+@media (max-width: 560px) {
+  .welcome { padding: 0 20px; }
+  .welcome__hero { padding: 42px 0 48px; }
+  .welcome__headline { font-size: 2.45rem; }
+  .welcome__sub { font-size: 0.96rem; }
+  .welcome__hero > .scan-frame { min-height: 300px; }
+  .welcome__how { grid-template-columns: 1fr; gap: 24px; padding: 30px 0 48px; }
+  .welcome__how-heading h2 { margin-top: 8px; }
 }
