@@ -5,7 +5,7 @@ import Dashboard from './pages/Dashboard';
 import Doctors from './pages/Doctors';
 
 export default function App() {
-  const [view, setView] = useState('welcome'); // 'welcome' | 'dashboard' | 'doctors'
+  const [view, setView] = useState('welcome');
 
   return (
     <div className="app-shell">

@@ -11,7 +11,7 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 export default function Dashboard() {
   const [imageUrl, setImageUrl] = useState(null);
   const [uploadedFile, setUploadedFile] = useState(null);
-  const [status, setStatus] = useState('idle'); // idle | scanning | done | error
+  const [status, setStatus] = useState('idle');
   const [result, setResult] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
   const [dragActive, setDragActive] = useState(false);

@@ -20,7 +20,7 @@ export default function ConsultPanel({ predictions, imageFile }) {
   const [recs, setRecs] = useState(null);
   const [recError, setRecError] = useState('');
   const [open, setOpen] = useState(false);
-  const [step, setStep] = useState('doctor'); // doctor | details | done
+  const [step, setStep] = useState('doctor');
   const [doctor, setDoctor] = useState(null);
   const [slots, setSlots] = useState([]);
   const [slot, setSlot] = useState('');
@@ -48,7 +48,7 @@ export default function ConsultPanel({ predictions, imageFile }) {
       .then((res) => {
         if (latestDoctor.current !== d.id) return;
         setSlots(res.slots);
-        setSlot(res.slots[0] || ''); // earliest available slot is pre-selected
+        setSlot(res.slots[0] || '');
       })
       .catch((e) => latestDoctor.current === d.id && setError(e.message))
       .finally(() => latestDoctor.current === d.id && setSlotsLoading(false));
@@ -56,7 +56,7 @@ export default function ConsultPanel({ predictions, imageFile }) {
 
   const openPanel = () => {
     setOpen(true);
-    if (recs && !doctor && recs.doctors.length) selectDoctor(recs.doctors[0]); // best match pre-selected
+    if (recs && !doctor && recs.doctors.length) selectDoctor(recs.doctors[0]);
   };
 
   const byDay = useMemo(() => {
@@ -83,7 +83,7 @@ export default function ConsultPanel({ predictions, imageFile }) {
       setConfirmation(res); setStep('done');
     } catch (e) {
       setError(e.message);
-      if (/slot/i.test(e.message)) { selectDoctor(doctor); setStep('doctor'); } // slot was taken: pick again
+      if (/slot/i.test(e.message)) { selectDoctor(doctor); setStep('doctor'); }
     } finally {
       setBusy(false);
     }
