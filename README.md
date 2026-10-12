@@ -11,6 +11,9 @@ A full-stack deep learning application that estimates the likelihood of 14 commo
 - React-based frontend for image upload and animated result display
 - Python backend serving real-time model predictions via API
 - Clean, responsive UI with per-finding probability breakdown
+- Optional local Ollama assistant with streamed responses and current scan context
+- Structured chest radiograph report draft with required-fact validation and a template fallback
+- Sample specialist matching, appointment booking, and report delivery/outbox support
 
 ## Tech Stack
 
@@ -23,6 +26,7 @@ A full-stack deep learning application that estimates the likelihood of 14 commo
 - Python
 - FastAPI
 - Uvicorn
+- Ollama (optional, for local AI chat and report generation)
 
 **Frontend**
 - React.js
@@ -71,12 +75,35 @@ cd backend
 uvicorn app.main:app --reload
 ```
 
+### Optional Ollama Setup
+
+Install and start [Ollama](https://ollama.com/), then download a chat-capable model:
+```bash
+ollama pull llama3.2:3b
+```
+
+Create `backend/.env` to enable local AI chat and report generation:
+```env
+REPORT_PROVIDER=ollama
+OLLAMA_BASE_URL=http://127.0.0.1:11434
+OLLAMA_MODEL=llama3.2:3b
+OLLAMA_TIMEOUT=120
+```
+
+Restart the backend after changing `.env`. Ollama runs locally and does not need an API key. If Ollama is not configured or a report draft omits required details, report generation falls back to the structured template. Chat requires Ollama to be available.
+
+The report generator receives patient-provided details and model scores, not the X-ray itself. Its structured draft therefore marks image anatomy as not assessed and treats scores as model estimates, not radiologist findings. Missing patient ID, examination date, or technique are shown as not provided.
+
 Frontend setup
 ```bash
 cd chexray-frontend
 npm install
 npm run dev
 ```
+
+The dashboard includes an assistant that streams replies from the configured Ollama model and can use the current scan scores as context. Emergency and self-harm keyword checks return fixed safety guidance before a message is sent to the model.
+
+The specialist profiles are fictional demo data. When SMTP is not configured, appointment emails are saved as `.eml` files in `backend/outbox/` instead of being sent.
 
 ## How It Works
 ```
